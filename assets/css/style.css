@@ -7,10 +7,20 @@ html {
   font-size: 62.5%; }
 
 body {
-  font-size: 18px; }
+  font-size: 18px;
+  font-family: 'Questrial', sans-serif; }
 
 .jumbotron__lead {
-  font-style: italic; }
+  font-style: italic;
+  font-family: 'Pompiere', cursive;
+  font-size: 2em; }
+
+.jumbotron__brand {
+  font-family: 'Questrial', sans-serif;
+  font-size: 5em; }
+
+.card-title {
+  font-size: 2em; }
 
 .jumbotron {
   background-image: linear-gradient(-110deg, #BCD979, #A3B2B6);
@@ -20,7 +30,7 @@ body {
   background-color: #234154;
   padding: 2em; }
 
-.card__body {
+.card-body {
   border-style: solid;
   border-width: 2px; }
 
@@ -28,6 +38,9 @@ body {
   background-color: #303F43;
   color: #DAEAB5;
   padding: 2em; }
+  .form__row {
+    display: flex;
+    flex-direction: row; }
 
 .btn {
   background-color: #60B2E5; }
