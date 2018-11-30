@@ -2,6 +2,10 @@
     background-color: $color-secondary-dark;
     color: $color-tertiary-light;
     padding: 2em;
+    &__row{
+        display:flex;
+        flex-direction: row;
+    }
 
 }
 .btn {
