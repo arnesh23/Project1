@@ -1,0 +1,24 @@
+{
+  "name": "Project1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "project1.js",
+  "scripts": {
+    "sass": "node-sass assets/sass/main.scss assets/css/style.css -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnesh23/Project1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnesh23/Project1/issues"
+  },
+  "homepage": "https://github.com/arnesh23/Project1#readme",
+  "dependencies": {
+    "node-sass": "^4.10.0"
+  }
+}

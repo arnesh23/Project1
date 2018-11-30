@@ -1,0 +1,12 @@
+.content {
+    background-color: $color-primary-dark;
+    padding: 2em;
+}
+
+.card {
+    &__body{
+        border-style: solid;
+        border-width: 2px;
+       
+    }
+}
