@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-size: 18px; }
+
+.jumbotron__lead {
+  font-style: italic; }
+
+.jumbotron {
+  background-image: linear-gradient(-110deg, #BCD979, #A3B2B6);
+  text-align: center; }
+
+.content {
+  background-color: #234154;
+  padding: 2em; }
+
+.card__body {
+  border-style: solid;
+  border-width: 2px; }
+
+.form {
+  background-color: #303F43;
+  color: #DAEAB5;
+  padding: 2em; }
+
+.btn {
+  background-color: #60B2E5; }
+
+.playlist {
+  background-color: #A3B2B6; }

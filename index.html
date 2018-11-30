@@ -2,118 +2,153 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FoodTunes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FoodTunes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <div id="wrapper">
-            <div class="jumbotron">
-                    <h1 class="display-4">FoodTunes</h1>
-                    <p class="lead">The world's best grub finder for music lovers</p>
-                    <hr class="my-4">
-                    <p>Enter your zip code and choose up to five songs for your playlist and we will recommend three places nearby for you to eat.</p>
-                    <div class="input-group">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">Zip Code</span>
-                            </div>
-                            <textarea class="form-control" id="inputZipCode"></textarea>
-                            <div class="input-group-prepend">
-                                    <span class="input-group-text">Artist</span>
-                                  </div>
-                                  <textarea class="form-control" id="inputArtist"></textarea>
-                                  <div class="input-group-prepend">
-                                        <span class="input-group-text">Song</span>
-                                      </div>
-                                      <textarea class="form-control" id="inputSong"></textarea>
-                          </div>
-                          <button type="button" class="btn btn-secondary btn-lg btn-block" id= "searchButton">Search</button>
-                  </div>
-               <div class = "row" >
-                   <div class = "col-lg-6">
-                       <div class = "placeholderImage" style ="height: 300px; width: 300px; background-color: grey; border-style:solid; margin:auto"></div>
-                   </div>
-                   <div class = "col-lg-6">
-                        <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Playlist</th>
-                                   
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td id ="row1Data">-----</td>
-                                 
-                                  </tr>
-                                  <tr>
-                                    <th scope="row" id="row2">2</th>
-                                    <td id ="row2Data">-----</td>
-                                
-                                  </tr>
-                                  <tr>
-                                    <th scope="row" id="row3">3</th>
-                                    <td id ="row3Data">-----</td>
-                                
-                                  </tr>
-                                  <th scope="row" id="row4">4</th>
-                                  <td id ="row4Data">-----</td>
-                              
-                                </tr>
-                                <th scope="row" id="row5">5</th>
-                                <td id ="row5Data">-----</td>
-                            
-                              </tr>
-                                </tbody>
-                              </table>
-                   </div>
-                   
-               </div>  
-  <hr>
-  <div class = "row" >
-        <div class = "col-lg-6">
-            <div class = "placeholderImage" style ="height: 500px; width: 500px; background-color: grey; border-style:solid; margin:auto"></div>
+
+  <div class="jumbotron">
+    <div class="jumbotron__logo-container"></div>
+    <h1 class="jumbotron__brand">FoodTunes</h1>
+    <img src="assets/images/foodTunesLogo_01.png" alt="foodtunes logo" class="jumbotron__logo">
+    <p class="jumbotron__lead">The world's best grub finder for music lovers</p>
+    <hr class="my-4">
+  </div>
+    <form class = "form">
+        <p>Enter your zip code </p>
+      <div class="form-row">
+        <div class="col-md-2">
+          <input type="text" class="form-control" id="inputZipCode" placeholder="zip code">
         </div>
-        <div class = "col-lg-6">
-                <div class="card w-75">
-                        <div class="card-body">
-                          <h5 class="card-title">Restaurant One</h5>
-                          <p class="card-text">some yummy stuff here</p>
-                          <a href="#" class="btn btn-primary">Button</a>
-                        </div>
-                      </div>
-                      
-                      <div class="card w-75">
-                        <div class="card-body">
-                          <h5 class="card-title">Restaurant two</h5>
-                          <p class="card-text">some yummy stuff here</p>
-                          <a href="#" class="btn btn-primary">Button</a>
-                        </div>
-                      </div>
-                      <div class="card w-75">
-                            <div class="card-body">
-                              <h5 class="card-title">Restaurant three</h5>
-                              <p class="card-text">some yummy stuff here</p>
-                              <a href="#" class="btn btn-primary">Button</a>
-                            </div>
-                          </div>
-                      </div>  
-                       
+        <div class="col-md-2">
+          <input class="btn btn-primary" type="button" value="Input">
         </div>
+        <div class="col-md-8"> </div>
+      </div>
+      <p>choose up to five songs for your playlist and we will recommend three places nearby for you to eat.</p>
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" id="inputArtist placeholder=" artist>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" id="inputSong" placeholder="title">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Add to playlist">
+      </div>
+    </form>
+  <div class = "playlist">
+  <div class="row">
+    <div class="col-lg-3">
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    <div class="col-lg-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">#</th>
+            <th scope="col">Playlist</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="placeholderImage" style="height: 60px; width: 60px;  
+            border-style:solid; "> <img src="assets/images/foodTunesIcon.png" 
+            style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
+            <th scope="row">1</th>
+            <td id="row1Data">-----</td>
+
+          </tr>
+          <tr>
+            <th class="placeholderImage" style="height: 60px; width: 60px;  
+            border-style:solid; "> <img src="assets/images/foodTunesIcon.png" 
+            style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
+            <th scope="row" id="row2">2</th>
+            <td id="row2Data">-----</td>
+
+          </tr>
+          <tr>
+            <th class="placeholderImage" style="height: 60px; width: 60px;  
+            border-style:solid; "> <img src="assets/images/foodTunesIcon.png" 
+            style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
+            <th scope="row" id="row3">3</th>
+            <td id="row3Data">-----</td>
+
+          </tr>
+          <th class="placeholderImage" style="height: 60px; width: 60px;  
+          border-style:solid; "> <img src="assets/images/foodTunesIcon.png"
+          style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
+          <th scope="row" id="row4">4</th>
+          <td id="row4Data">-----</td>
+
+          </tr>
+          <th class="placeholderImage" style="height: 60px; width: 60px;  
+          border-style:solid; "> <img src="assets/images/foodTunesIcon.png"
+          style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
+          <th scope="row" id="row5">5</th>
+          <td id="row5Data">-----</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-3">
+    </div>
+
+  </div>
+  <hr class="my-4">
+</div>
+  <div class = "content">
+    
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="placeholderImage" style="height: 500px; width: 500px; background-color: grey; border-style:solid; margin:auto"></div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card__body">
+          <h5 class="card__title">Restaurant One</h5>
+          <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
+         
+        </div>
+     
+
+    
+        <div class="card__body">
+          <h5 class="card__title">Restaurant two</h5>
+          <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+             ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
+          
+        </div>
+  
+        <div class="card__body">
+          <h5 class="card__title">Restaurant three</h5>
+          <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit </p>
+         
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script src="./javascript/app.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  <script src="./javascript/app.js"></script>
 </body>
 
 </html>
