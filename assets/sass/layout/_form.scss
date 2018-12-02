@@ -2,9 +2,33 @@
     background-color: $color-secondary-dark;
     color: $color-tertiary-light;
     padding: 2em;
+  
     &__row{
         display:flex;
         flex-direction: row;
+
+        &-fieldOne {
+            display:flex;
+            flex-direction: row;
+            width: 5em;
+          
+        }
+        &-buttonOne{
+            display:flex;
+            flex-direction: row;
+        }
+        &-fieldTwo {
+            display:flex;
+            flex-direction: row;
+        }
+        &-fieldThree {
+            display:flex;
+            flex-direction: row;
+        }
+        &-buttonTwo {
+            display:flex;
+            flex-direction: row;
+        }
     }
 
 }
