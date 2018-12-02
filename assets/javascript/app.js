@@ -188,6 +188,7 @@ var cuisineList = [];
             console.log((response.popularity.top_cuisines));
             
             displayRestaurant(response);
+            initMap()
         })
         
     }    
@@ -244,13 +245,14 @@ var cuisineList = [];
 //===============================================================    
 //                Feature-3 : Display  map    
 //===============================================================   
-       function initMap() {
+           })
+   function initMap() {
         var locCoord = [{lat: 37.424574, lng: -121.748382},{lat:37.6213,lng: -122.389977}];
         var myLatLng = {lat: 37.424574, lng: -121.748382};
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
-          center: myLatLng
+          center: locCoord[0] // set to initial value
         });
 //        //Simple marker
 //          var marker = new google.maps.Marker({
@@ -279,7 +281,8 @@ var cuisineList = [];
           }
         
       }
-    })
+       
+
    
   
    
