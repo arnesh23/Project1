@@ -62,34 +62,34 @@
           </thead>
           <tbody class = "table__body">
             <tr>
-              <th class="placeholderImage" style="height: 60px; width: 60px;"> <img
+              <th class="placeholderImage" id = "row1Image" style="height: 60px; width: 60px;"> <img
                   src="assets/images/foodTunesIcon.png" style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
               <th scope="row">1</th>
               <td id="row1Data">Sample</td>
 
             </tr>
             <tr>
-              <th class="placeholderImage" style="height: 60px; width: 60px;"> <img
+              <th class="placeholderImage" id = "row2Image" style="height: 60px; width: 60px;"> <img
                   src="assets/images/foodTunesIcon.png" style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
               <th scope="row" id="row2">2</th>
               <td id="row2Data">-----</td>
 
             </tr>
             <tr>
-              <th class="placeholderImage" style="height: 60px; width: 60px; "> <img
+              <th class="placeholderImage" id = "row3Image" style="height: 60px; width: 60px; "> <img
                   src="assets/images/foodTunesIcon.png" style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
               <th scope="row" id="row3">3</th>
               <td id="row3Data">-----</td>
 
             </tr>
-            <th class="placeholderImage" style="height: 60px; width: 60px;" 
+            <th class="placeholderImage" id = "row4Image" style="height: 60px; width: 60px;" 
            > <img src="assets/images/foodTunesIcon.png"
                 style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
             <th scope="row" id="row4">4</th>
             <td id="row4Data">-----</td>
 
             </tr>
-            <th class="placeholderImage" style="height: 60px; width: 60px;"  
+            <th class="placeholderImage" id = "row5Image" style="height: 60px; width: 60px;"  
            > <img src="assets/images/foodTunesIcon.png"
                 style="height: 40px; width: 40px;" alt="foodtunes icon"></th>
             <th scope="row" id="row5">5</th>
@@ -152,6 +152,24 @@
     </div>
 
   </div>
+  </div>
+  <div id = "alertModal" class = "modal">
+    <div class = "modal__dialog">
+      <div class = "modal__content">
+      <div class = "modal__header">
+        <button class = "close" data-dismiss = "modal">&times;</button>
+        <h4 class = "modal__title">Song Not Found</h4>
+      </div>
+      <div class = "modal__body">
+        <p></p>
+      </div>
+      <div class = "modal__footer">
+        <button class = "btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+
+      </div>
+    </div>
+
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>

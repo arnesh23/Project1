@@ -40,9 +40,12 @@ p {
   background-color: #234154;
   padding: 2em; }
 
-.card-body {
-  border-style: solid;
-  border-width: 2px; }
+.card {
+  margin: 2em; }
+  .card-body {
+    border-style: solid;
+    border-width: 2px;
+    background-color: #DAEAB5; }
 
 .form {
   background-color: #303F43;

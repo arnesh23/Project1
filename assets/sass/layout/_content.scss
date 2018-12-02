@@ -4,9 +4,11 @@
 }
 
 .card {
+    margin: 2em;
     &-body{
         border-style: solid;
         border-width: 2px;
+        background-color: $color-tertiary-light;
        
     }
 }
