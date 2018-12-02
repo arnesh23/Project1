@@ -116,12 +116,13 @@ var cuisineList = [];
 //      })
       
 //===============================================================    
-//                Feature-2 : Display restaurant and map    
+//                Feature-2 : Display restaurants    
 //===============================================================     
       
-      var cuisines = ["Mexican","Italian","Indian"];
+      var cuisines = ["Mexican","Italian","Indian","Chinese"];
       var getZipCode = "95132";
       var locCoordinates = {};
+//      var locCoordinates = getCoordinates(getZipCode);
 //    // get user input - uncomment before merging to master
 //       $("#inputZipCode").on("click", function(){
 //             getZipCode = $("#userZip").val();
@@ -133,10 +134,12 @@ var cuisineList = [];
           options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
         }
       });
-     function getLatLng(){
+    function getCoordinates(inpZip){
     // Make AJAX call to zipcode api to get lat/lng coordinates for zipcode
     //query - https://www.zipcodeapi.com/rest/fBPSu90menTPyiiwthbSbkzQ6zmVcDelh42nY2CUtRbEkaOJ4u16dV3l3XWoEaEE/info.json/95133/degrees
-    var zipcodeQueryURL = "https://www.zipcodeapi.com/rest/BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE/info.json/" + getZipCode + "/degrees";
+    //key2 - BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE
+    var zipAPIKey = "sXuRDF15cKTmcNzSP648VSUldR2WsiDrlmy9tqLlF89ZUtXfEGMy94w9ic4qAdSM";
+    var zipcodeQueryURL = "https://www.zipcodeapi.com/rest/"+ zipAPIKey + "/info.json/" + inpZip + "/degrees";
     $.ajax({
       url: zipcodeQueryURL,
       method: "GET",
@@ -147,10 +150,12 @@ var cuisineList = [];
       console.log(response);
       console.log("latitude" ,response.lat);
       console.log("longitude" ,response.lng);
-        locCoordinates["lat"] = response.lat;
-        locCoordinates["lng"] = response.lng;
-        console.log(locCoordinates);
-        getCoordinates(locCoordinates);
+      locCoordinates.lat = response.lat;
+      locCoordinates.lng = response.lng;
+        
+      getNearbyRestaurants({lat:response.lat,lng:response.lng});
+          
+        
      });
      }
     
@@ -161,19 +166,22 @@ var cuisineList = [];
     // Make AJAX call to zomato api to get restaurant details
     // api key - c1a4300483e0e00f83696611ea2ab876
     // query - https://developers.zomato.com/api/v2.1/geocode?lat=37.424574&lon=-121.748382
-        getCoordinates()
+    // Frst get lat/lng coordinates using zip to list restaurant
+//        locCoordinates = getCoordinates(getZipCode);
+//        console.log(locCoordinates);
         var getLng = obj.lng;
         var getLat = obj.lat;
         var zomatoQueryURL = "https://developers.zomato.com/api/v2.1/geocode?lat=" + getLat + "&lon=" + getLng ;
         
         
         $.ajax({
-            url : "https://developers.zomato.com/api/v2.1/geocode?lat=37.424574&lon=-121.748382",
+            url : zomatoQueryURL,
+            //"https://developers.zomato.com/api/v2.1/geocode?lat=37.424574&lon=-121.748382",
             method: "GET",
             headers: {
              "content-type" : "application/json",
              "user-key": "c1a4300483e0e00f83696611ea2ab876"
-//            Accept: "application/json" 
+
           }
         }).then(function(response){
             console.log(response);
@@ -185,10 +193,92 @@ var cuisineList = [];
     }    
         
        function displayRestaurant(details){
-            var cardTitle = $(".card__title")
+           // get top_cuisines from response and compare with list of cuisines from prev module
+           var top_cuisines = details.popularity.top_cuisines;
+           var availableCuisine = [];
+           var restList = details.nearby_restaurants;
+           console.log("restlist length - ",restList.length);
+           for (i in cuisines) {
+               for(j in top_cuisines) {
+                   if(cuisines[i].toLowerCase() === top_cuisines[j].toLowerCase()) {
+                       availableCuisine.push(cuisines[i].toLowerCase());
+                   }
+               }
+           }
+           console.log(availableCuisine);
+           console.log("restList",restList[0].restaurant.name);
+           console.log("restList",restList[1].restaurant.name);
+           console.log("restList",restList[2].restaurant.name);
+           
+           
+            var getCardDiv =  $(".card");        //$(".card-title");
+            var getCardTitle = $(".card-title");
+            var getCardSubTitle = $(".card-subtitle");
+            var getCardText = $(".card-text");
+           
+           
+        //for 
+            for (idx=0;idx<getCardDiv.length;idx++){
+        console.log("//=========================================//");
+                
+                console.log("length of card -" ,getCardDiv.length);
+                console.log("restlist length - ",restList.length)
+                console.log("idx - ",idx);
+                $(getCardTitle[idx]).text(restList[idx].restaurant.name);
+                
+                $(getCardSubTitle[idx]).text("Cuisine : " +  restList[idx].restaurant.cuisines);
+                $(getCardText[idx]).text(restList[idx].restaurant.location.address);
+                
+               // $(cardTitle[idx]).text(restList[idx].restaurant.name);
+                console.log(idx + "-" + restList[idx].restaurant.name);
+                console.log(idx + "-" + restList[idx].restaurant.cuisines);
+                console.log(idx + "-" + restList[idx].restaurant.location.address);
+               
+          console.log("//=========================================//");     
+            }
        }
        
-   
+         getCoordinates(getZipCode);
+       
+
+//===============================================================    
+//                Feature-3 : Display  map    
+//===============================================================   
+       function initMap() {
+        var locCoord = [{lat: 37.424574, lng: -121.748382},{lat:37.6213,lng: -122.389977}];
+        var myLatLng = {lat: 37.424574, lng: -121.748382};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: myLatLng
+        });
+//        //Simple marker
+//          var marker = new google.maps.Marker({
+//          position: myLatLng,
+//          map: map,
+//          title: 'Hello World!'
+//        });
+//        //}
+          
+          generateMarker(locCoord);
+          
+          function generateMarker(objCoord){
+              for(i=0;i<objCoord.length;i++){
+                  addMarker(objCoord[i]);
+              }
+              
+          }
+          
+        // Multiple markers - Add marker function 
+          function addMarker(coords){
+              var marker = new google.maps.Marker({
+              position: coords,
+              map: map,
+              title: 'Hello World!'
+              });
+          }
+        
+      }
     })
    
   
