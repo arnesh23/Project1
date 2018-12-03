@@ -268,8 +268,6 @@ var cuisineList = [];
         var getLat = obj.lat;
         var zomatoQueryURL = "https://developers.zomato.com/api/v2.1/geocode?lat=" + getLat + "&lon=" + getLng ;
         
-<<<<<<< HEAD
-=======
 
 
       var numOfPlaylists = 1;
