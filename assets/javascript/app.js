@@ -199,43 +199,71 @@ var cuisineList = [];
            var availableCuisine = [];
            var restList = details.nearby_restaurants;
            console.log("restlist length - ",restList.length);
-           for (i in cuisines) {
-               for(j in top_cuisines) {
+           for (i=0;i<cuisines.length;i++) {
+               for(j=0;j<top_cuisines.length;j++) {
                    if(cuisines[i].toLowerCase() === top_cuisines[j].toLowerCase()) {
                        availableCuisine.push(cuisines[i].toLowerCase());
                    }
                }
            }
-           console.log(availableCuisine);
-           console.log("restList",restList[0].restaurant.name);
-           console.log("restList",restList[1].restaurant.name);
-           console.log("restList",restList[2].restaurant.name);
+           console.log("availableCuisine ",availableCuisine);
+           //Pick a random cuisine if all the 3 cuisines doesn't match with top cuisine
+           
+          
+            while(availableCuisine.length < 3) {
+               var pickRandomCuisine = Math.floor(Math.random() * top_cuisines.length);
+               var addRandomCuisine = top_cuisines[pickRandomCuisine].toLowerCase();
+              if(availableCuisine.indexOf(addRandomCuisine) == -1){
+                   availableCuisine.push(addRandomCuisine);
+                   console.log(addRandomCuisine);
+             }    
+               console.log(availableCuisine.length);
+               
+           }
            
            
-            var getCardDiv =  $(".card");        //$(".card-title");
+           
+           console.log("availableCuisine after adjustment", availableCuisine);
+           
+            var getCardDiv =  $(".card");        
             var getCardTitle = $(".card-title");
             var getCardSubTitle = $(".card-subtitle");
             var getCardText = $(".card-text");
            
            
-        //for 
-            for (idx=0;idx<getCardDiv.length;idx++){
-        console.log("//=========================================//");
+     
+            for (idx=0;idx<getCardDiv.length;idx++) {
                 
-                console.log("length of card -" ,getCardDiv.length);
-                console.log("restlist length - ",restList.length)
-                console.log("idx - ",idx);
-                $(getCardTitle[idx]).text(restList[idx].restaurant.name);
+               //for(j=0;j<availableCuisine.length;j++) {
+                   //make it unique
+                   for(k=0;k<restList.length;k++){;
+                       var compCuisine = restList[k].restaurant.cuisines.toLowerCase();
+                        console.log("compCuisine ",compCuisine);
+                       if(availableCuisine.indexOf(compCuisine) != -1 ) {
+                           console.log("//=========================================//");
                 
-                $(getCardSubTitle[idx]).text("Cuisine : " +  restList[idx].restaurant.cuisines);
-                $(getCardText[idx]).text(restList[idx].restaurant.location.address);
-                
-               // $(cardTitle[idx]).text(restList[idx].restaurant.name);
-                console.log(idx + "-" + restList[idx].restaurant.name);
-                console.log(idx + "-" + restList[idx].restaurant.cuisines);
-                console.log(idx + "-" + restList[idx].restaurant.location.address);
-               
-          console.log("//=========================================//");     
+                   console.log("length of card -" ,getCardDiv.length);
+                   console.log("restlist length - ",restList.length)
+                   console.log("idx - ",idx);
+                   $(getCardTitle[idx]).text(restList[k].restaurant.name);
+
+                   $(getCardSubTitle[idx]).text("Cuisine : " +  restList[k].restaurant.cuisines);
+                   $(getCardText[idx]).text(restList[k].restaurant.location.address);
+
+                   // 
+                    console.log(idx + "-" + restList[k].restaurant.name);
+                    console.log(idx + "-" + restList[k].restaurant.cuisines);
+                    console.log(idx + "-" + restList[k].restaurant.location.address);
+
+              console.log("//=========================================//");
+                           
+                       }
+                       
+                   }
+//                   
+//                   if(availableCuisine[j] == )
+                   
+             //  }      
             }
        }
        
@@ -254,14 +282,7 @@ var cuisineList = [];
           zoom: 8,
           center: locCoord[0] // set to initial value
         });
-//        //Simple marker
-//          var marker = new google.maps.Marker({
-//          position: myLatLng,
-//          map: map,
-//          title: 'Hello World!'
-//        });
-//        //}
-          
+
           generateMarker(locCoord);
           
           function generateMarker(objCoord){
@@ -276,8 +297,18 @@ var cuisineList = [];
               var marker = new google.maps.Marker({
               position: coords,
               map: map,
-              title: 'Hello World!'
+              title: 'Click to zoom!',
+              url : "https://www.google.com/maps"
+              
               });
+              marker.addListener("click",function(){
+             //     window.location.href = "https://www.google.com/maps";
+                  map.setZoom(15);
+                  map.setCenter(marker.getPosition());
+                   window.location.href = "https://www.google.com/maps";
+
+                  window.setTimeout(function() {map.setZoom(pos);},3000);
+              })
           }
         
       }
