@@ -7,7 +7,7 @@
 
 // Genre to Cuisine Mapping
 // Genre to Cuisine Mapping
-genreTypes = {
+var genreTypes = {
   numofGenres: 32,
   "Blues": "Mexican",
   "Comedy": "Italian",
@@ -235,48 +235,6 @@ function getNearbyRestaurants(obj) {
   var zomatoQueryURL = "https://developers.zomato.com/api/v2.1/geocode?lat=" + getLat + "&lon=" + getLng;
 
 
-
-  var numOfPlaylists = 1;
-
-  console.log(genreTypes);
-  /*var zipcodeapikey = 
-   "BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE";
-  var zoomatoapikey = "c1a4300483e0e00f83696611ea2ab876"
-  var lattitude;
-  var longitude;
-    */
-
-  //Per Click run the block of code
-  $("#searchButton").on("click", function (event) {
-    event.preventDefault()
-
-    if (numOfPlaylists === 6)
-      numOfPlaylists = 1;
-
-    //initialize variables
-
-
-    var zip = $("#inputZipCode").val();
-    var artist = $("#inputArtist").val();
-    var song = $("#inputSong").val();
-    var songExists = false;
-
-    zipCode.push(zip);
-    firebase.database().ref('ZipCodes/' + "ZipCode").set({
-      ZipCode: zipCode
-    });
-
-    // Check if the artist/zip/song tabs are empty
-    // put Modal here instead of pop up 
-    //if(zip ==="" || artist ==="" || song === "")
-    //  console.log("Empty tab present");
-    //else
-    //{
-    // Construct your query URL here using the values the user gave us.
-    queryURL_Itunes = 'https://itunes.apple.com/search?term=' + artist;
-    //queryURL_ZipCode = 'https://www.zipcodeapi.com/rest/'+zipcodeapikey+"/info.json/"+zip+"/degrees";
-
-
     $.ajax({
       url: zomatoQueryURL,
       //"https://developers.zomato.com/api/v2.1/geocode?lat=37.424574&lon=-121.748382",
@@ -349,7 +307,7 @@ function getNearbyRestaurants(obj) {
   //===============================================================    
   //                Feature-3 : Display  map    
   //===============================================================   
-})
+
 function initMap() {
   var locCoord = [{ lat: 37.424574, lng: -121.748382 }, { lat: 37.6213, lng: -122.389977 }];
   var myLatLng = { lat: 37.424574, lng: -121.748382 };
@@ -361,38 +319,6 @@ function initMap() {
 
   generateMarker(locCoord);
 
-
-  //Parsing the response to JSON OBject
-  response = JSON.parse(response);
-  console.log(response);
-
-
-  for (var i = 0; i < response.resultCount; i++) {
-    var trackNameResponseLowCase = response.results[i].trackName.toLowerCase();
-    if ((trackNameResponseLowCase).includes(song.toLowerCase())) {
-      console.log("Song Name:" + song);
-      console.log("Song Exist");
-      console.log((response.results[i].trackName));
-      console.log(i);
-
-
-      var genre = response.results[i].primaryGenreName;
-      var trackName = response.results[i].trackName;
-
-      var imgTag = $('img');
-
-
-      console.log(response);
-      artistFromList = response.results[0].artistName;
-      console.log(artistFromList);
-      var imgSrc = response.results[numOfPlaylists].artworkUrl60;
-      console.log(imgSrc);
-
-
-      var random = Math.floor(Math.random() * 32);
-      //console.log("Random"+random);
-      //console.log(genreTypes[random].genre);
-      //console.log(genreTypes[random]);
 
 
       function generateMarker(objCoord) {
@@ -424,33 +350,6 @@ function initMap() {
 
     }
 
-
-
-
-
-
-    console.log("CuisineList:" + cuisineList);
-    console.log(i);
-
-    $("#row" + numOfPlaylists + "Data").text(trackName + " " + artistFromList);
-    $("#row" + numOfPlaylists + "Image").attr("src", imgSrc);
-
-    // console.log("i"+i);
-    console.log(numOfPlaylists)
-    numOfPlaylists++;
-    songExists = true;
-    break;
-  }
-        else
-  console.log(i)
-}
-if (songExists === false)
-  $('#alertModal').modal('show')
-        })
-//
-return cuisineList;
-      })
-    })
 
 
 
