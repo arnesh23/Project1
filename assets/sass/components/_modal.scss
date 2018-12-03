@@ -1,0 +1,42 @@
+
+
+
+.modal {
+    border-style:solid;
+    border-color: white;
+    border-radius: 15px;
+    
+
+    background-color: $color-secondary;
+    top: 60%;
+    left: 50%;
+    // bottom: 60%;
+    transform: translate(-50%, -50%);
+
+    &__content{
+        // display: flex;
+        // justify-content: space-around;
+        // align-items: center;
+
+    }
+    &__title{
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-top: 1em;
+    }
+    &__body{
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: 1em;
+
+    }
+    &__footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
