@@ -39,6 +39,18 @@ p{
 
     }
 }
+.modal{
+    &__title {
+        font-size: 3em;
+    }
+    &__body {
+        font-size: 1.5em;
+        font-family: $serif;
+    }
+    &__footer {
+        font-size: 1.5em;
+    }
+}
 
 // font-family: 'Pompiere', cursive;
 // font-family: 'Questrial', sans-serif;

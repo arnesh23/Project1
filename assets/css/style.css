@@ -35,9 +35,44 @@ p {
   font-family: "Pompiere", cursive;
   padding-top: 2em; }
 
+.modal__title {
+  font-size: 3em; }
+
+.modal__body {
+  font-size: 1.5em;
+  font-family: "Pompiere", cursive; }
+
+.modal__footer {
+  font-size: 1.5em; }
+
 .jumbotron {
   background-image: linear-gradient(-110deg, #BCD979, #A3B2B6);
   text-align: center; }
+
+.modal {
+  border-style: solid;
+  border-color: white;
+  border-radius: 15px;
+  background-color: #57737A;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .modal__title {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 1em; }
+  .modal__body {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 1em; }
+  .modal__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
 
 .content {
   background-color: #234154;
@@ -55,16 +90,15 @@ p {
   background-color: #303F43;
   color: #DAEAB5;
   padding: 2em; }
+  .form-control {
+    padding: 1em; }
   .form__row {
     display: flex;
     flex-direction: row; }
     .form__row-fieldOne {
       display: flex;
       flex-direction: row;
-      width: 5em; }
-    .form__row-buttonOne {
-      display: flex;
-      flex-direction: row; }
+      width: 6em; }
     .form__row-fieldTwo {
       display: flex;
       flex-direction: row; }
@@ -81,7 +115,8 @@ p {
   background-color: #60B2E5;
   border-style: solid;
   border-color: white;
-  border-radius: 0%; }
+  border-radius: 0%;
+  font-size: 1.2em; }
 
 #inputArtist {
   background-color: #A3B2B6;
@@ -89,7 +124,7 @@ p {
   border-color: white;
   border-radius: 0%;
   font-family: "Pompiere", cursive;
-  font-size: 1em; }
+  font-size: 1.2em; }
 
 #inputZipCode {
   background-color: #A3B2B6;
@@ -97,7 +132,7 @@ p {
   border-color: white;
   border-radius: 0%;
   font-family: "Pompiere", cursive;
-  font-size: 1em; }
+  font-size: 1.2em; }
 
 #inputSong {
   background-color: #A3B2B6;
@@ -105,7 +140,7 @@ p {
   border-color: white;
   border-radius: 0%;
   font-family: "Pompiere", cursive;
-  font-size: 1em; }
+  font-size: 1.2em; }
 
 .playlist {
   background-color: #A3B2B6;
