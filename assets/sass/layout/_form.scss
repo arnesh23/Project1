@@ -1,13 +1,72 @@
 .form{
-    background-color: $color-secondary-dark;
+    background-color: $color-secondary-dark;    
     color: $color-tertiary-light;
     padding: 2em;
+  
     &__row{
         display:flex;
         flex-direction: row;
+
+        &-fieldOne {
+            display:flex;
+            flex-direction: row;
+            width: 5em;
+           
+        }
+        &-buttonOne{
+            display:flex;
+            flex-direction: row;
+
+        }
+        &-fieldTwo {
+            display:flex;
+            flex-direction: row;
+        }
+        &-fieldThree {
+            display:flex;
+            flex-direction: row;
+        }
+        &-buttonTwo {
+            display:flex;
+            flex-direction: row;
+        }
+        &-control{
+            background-color: $color-secondary-light;
+        }
     }
 
 }
 .btn {
     background-color: $color-primary;
+    border-style:solid;
+    border-color: white;
+    border-radius: 0%;
+}
+#inputArtist  {
+    background-color: $color-secondary-light;
+    border-style:solid;
+    border-color: white;
+    border-radius: 0%;
+    font-family: $serif;
+    font-size: 1em;
+
+
+
+}
+#inputZipCode {
+    background-color: $color-secondary-light;
+    border-style:solid;
+    border-color: white;
+    border-radius: 0%;
+    font-family: $serif;
+    font-size: 1em;
+}
+
+#inputSong{
+    background-color: $color-secondary-light;
+    border-style:solid;
+    border-color: white;
+    border-radius: 0%;
+    font-family: $serif;
+    font-size: 1em;
 }

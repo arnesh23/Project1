@@ -43,33 +43,33 @@ var cuisineList = [];
    $(document).ready(function () {
 
       //This block of code eliminates the eliminatation the CORS restriction
-//      jQuery.ajaxPrefilter(function (options) {
-//        if (options.crossDomain && jQuery.support.cors) {
-//          options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-//        }
-//      });
-//
-//      var i = 1;
-//      console.log(genreTypes);
-//      /*var zipcodeapikey = 
-//       "BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE";
-//      var zoomatoapikey = "c1a4300483e0e00f83696611ea2ab876"
-//      var lattitude;
-//      var longitude;
-//        */
-//
+      jQuery.ajaxPrefilter(function (options) {
+        if (options.crossDomain && jQuery.support.cors) {
+          options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
+      });
+
+      var i = 1;
+      console.log(genreTypes);
+      /*var zipcodeapikey = 
+       "BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE";
+      var zoomatoapikey = "c1a4300483e0e00f83696611ea2ab876"
+      var lattitude;
+      var longitude;
+        */
+
 //      //Per Click run the block of code
-//      $("#searchButton").on("click", function (event) {
-//        event.preventDefault()
-//
-//        if(i === 6)
-//          i = 1;
-//
+      $("#searchButton").on("click", function (event) {
+        event.preventDefault()
+
+        if(i === 6)
+          i = 1;
+
 //        //initialize variables
-//        var zip = $("#inputZipCode").val();
-//        var artist = $("#inputArtist").val();
-//        var song = $("#inputSong").val();
-//
+        var zip = $("#inputZipCode").val();
+        var artist = $("#inputArtist").val();
+        var song = $("#inputSong").val();
+
 //        // Check if the artist/zip/song tabs are empty
 //        // put Modal here instead of pop up 
 //        //if(zip ==="" || artist ==="" || song === "")
@@ -218,7 +218,7 @@ var cuisineList = [];
             var getCardText = $(".card-text");
            
            
-        //for 
+       
             for (idx=0;idx<getCardDiv.length;idx++){
         console.log("//=========================================//");
                 

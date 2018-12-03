@@ -1,15 +1,16 @@
 body {
     font-size: 18px;
-    font-family: 'Questrial', sans-serif;
+    font-family: $san-serif;
+ 
 }
 .jumbotron {
     &__lead{
         font-style: italic;
-        font-family: 'Pompiere', cursive;
+        font-family: $serif;
         font-size: 2em;
     }
     &__brand{
-        font-family: 'Questrial', sans-serif;
+        font-family: $san-serif;
         font-size: 5em;
 
     }
@@ -17,6 +18,24 @@ body {
 .card{
     &-title{
         font-size: 2em;
+
+    }
+}
+.form {
+    &__row{
+font-size: 1em;
+    }
+}
+p{
+    margin-top: 1em;
+}
+.table{
+    &__heading{
+        font-size: 3em;
+    }
+    &__body {
+        font-family: $serif;
+        padding-top: 2em;
 
     }
 }
