@@ -8,19 +8,32 @@ html {
 
 body {
   font-size: 18px;
-  font-family: 'Questrial', sans-serif; }
+  font-family: "Questrial", sans-serif; }
 
 .jumbotron__lead {
   font-style: italic;
-  font-family: 'Pompiere', cursive;
+  font-family: "Pompiere", cursive;
   font-size: 2em; }
 
 .jumbotron__brand {
-  font-family: 'Questrial', sans-serif;
+  font-family: "Questrial", sans-serif;
   font-size: 5em; }
 
 .card-title {
   font-size: 2em; }
+
+.form__row {
+  font-size: 1em; }
+
+p {
+  margin-top: 1em; }
+
+.table__heading {
+  font-size: 3em; }
+
+.table__body {
+  font-family: "Pompiere", cursive;
+  padding-top: 2em; }
 
 .jumbotron {
   background-image: linear-gradient(-110deg, #BCD979, #A3B2B6);
@@ -30,9 +43,13 @@ body {
   background-color: #234154;
   padding: 2em; }
 
-.card-body {
-  border-style: solid;
-  border-width: 2px; }
+.card {
+  margin: 2em; }
+  .card-body {
+    background-color: #DAEAB5;
+    box-shadow: 5px 5px 4px 5px #303F43; }
+  .card-link {
+    color: #60B2E5; }
 
 .form {
   background-color: #303F43;
@@ -41,9 +58,55 @@ body {
   .form__row {
     display: flex;
     flex-direction: row; }
+    .form__row-fieldOne {
+      display: flex;
+      flex-direction: row;
+      width: 5em; }
+    .form__row-buttonOne {
+      display: flex;
+      flex-direction: row; }
+    .form__row-fieldTwo {
+      display: flex;
+      flex-direction: row; }
+    .form__row-fieldThree {
+      display: flex;
+      flex-direction: row; }
+    .form__row-buttonTwo {
+      display: flex;
+      flex-direction: row; }
+    .form__row-control {
+      background-color: #A3B2B6; }
 
 .btn {
-  background-color: #60B2E5; }
+  background-color: #60B2E5;
+  border-style: solid;
+  border-color: white;
+  border-radius: 0%; }
+
+#inputArtist {
+  background-color: #A3B2B6;
+  border-style: solid;
+  border-color: white;
+  border-radius: 0%;
+  font-family: "Pompiere", cursive;
+  font-size: 1em; }
+
+#inputZipCode {
+  background-color: #A3B2B6;
+  border-style: solid;
+  border-color: white;
+  border-radius: 0%;
+  font-family: "Pompiere", cursive;
+  font-size: 1em; }
+
+#inputSong {
+  background-color: #A3B2B6;
+  border-style: solid;
+  border-color: white;
+  border-radius: 0%;
+  font-family: "Pompiere", cursive;
+  font-size: 1em; }
 
 .playlist {
-  background-color: #A3B2B6; }
+  background-color: #A3B2B6;
+  margin-top: 1em; }
