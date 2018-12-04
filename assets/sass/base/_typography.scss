@@ -44,11 +44,20 @@ p{
         font-size: 3em;
     }
     &__body {
-        font-size: 1.5em;
+        font-size: 1.8em;
         font-family: $serif;
     }
     &__footer {
         font-size: 1.5em;
+        margin: 0 2em 0 2em;
+    }
+}
+.card{
+    &-subtitle{
+        font-family: $serif;
+        font-size: 1.2em;
+    
+        
     }
 }
 

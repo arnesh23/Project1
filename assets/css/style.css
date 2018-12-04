@@ -39,11 +39,16 @@ p {
   font-size: 3em; }
 
 .modal__body {
-  font-size: 1.5em;
+  font-size: 1.8em;
   font-family: "Pompiere", cursive; }
 
 .modal__footer {
-  font-size: 1.5em; }
+  font-size: 1.5em;
+  margin: 0 2em 0 2em; }
+
+.card-subtitle {
+  font-family: "Pompiere", cursive;
+  font-size: 1.2em; }
 
 .jumbotron {
   background-image: linear-gradient(-110deg, #BCD979, #A3B2B6);
@@ -58,6 +63,7 @@ p {
   left: 50%;
   transform: translate(-50%, -50%); }
   .modal__title {
+    color: #BCD979;
     text-align: center;
     display: flex;
     justify-content: space-around;
@@ -77,14 +83,18 @@ p {
 .content {
   background-color: #234154;
   padding: 2em; }
+  .content__map {
+    margin-top: 1.8em; }
 
 .card {
   margin: 2em; }
   .card-body {
-    background-color: #DAEAB5;
+    background-image: linear-gradient(30deg, #DAEAB5, #A3B2B6);
     box-shadow: 5px 5px 4px 5px #303F43; }
   .card-link {
     color: #60B2E5; }
+  .card-title {
+    color: #566337; }
 
 .form {
   background-color: #303F43;
@@ -110,6 +120,11 @@ p {
       flex-direction: row; }
     .form__row-control {
       background-color: #A3B2B6; }
+
+.btn:hover {
+  background-color: #BCD979;
+  color: #60B2E5;
+  border-color: white; }
 
 .btn {
   background-color: #60B2E5;

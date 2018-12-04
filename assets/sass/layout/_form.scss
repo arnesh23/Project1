@@ -17,12 +17,6 @@
             width: 6em;
             
         }
-        // &-buttonOne{
-        //     display:flex;
-        //     flex-direction: row;
-            
-            
-        // }
         &-fieldTwo {
             display:flex;
             flex-direction: row;
@@ -40,6 +34,11 @@
         }
     }
     
+}
+.btn:hover {
+    background-color: $color-tertiary;
+    color: $color-primary;
+    border-color: white;
 }
 .btn {
     background-color: $color-primary;
