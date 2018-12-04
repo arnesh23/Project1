@@ -43,7 +43,7 @@ var genreTypes = {
 // List of Cuisines
 var cuisineList = [];
 var zipCode = []
-
+var zip;
 
 
 $(document).ready(function () {
@@ -88,7 +88,7 @@ $(document).ready(function () {
     //initialize variables
 
 
-    var zip = $("#inputZipCode").val();
+        zip = $("#inputZipCode").val();
     var artist = $("#inputArtist").val();
     var song = $("#inputSong").val();
     var songExists = false;
@@ -166,6 +166,7 @@ $(document).ready(function () {
       }
       if (songExists === false)
         $('#alertModal').modal('show')
+        getCoordinates(zip);
     })
     //
 
@@ -178,7 +179,7 @@ $(document).ready(function () {
 //===============================================================     
 
 var cuisines = ["Mexican", "Italian", "Indian", "Chinese"];
-var getZipCode = "95132";
+//var getZipCode = "95132";
 var locCoordinates = {};
 //      var locCoordinates = getCoordinates(getZipCode);
 //    // get user input - uncomment before merging to master
@@ -192,6 +193,8 @@ jQuery.ajaxPrefilter(function (options) {
     options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
   }
 });
+// add google maps url 
+
 
 function getCoordinates(inpZip) {
   // Make AJAX call to zipcode api to get lat/lng coordinates for zipcode
@@ -346,4 +349,4 @@ function initMap() {
         })
       }
 
-
+}
