@@ -2,22 +2,27 @@
     background-color: $color-secondary-dark;    
     color: $color-tertiary-light;
     padding: 2em;
+    &-control {
+        padding: 1em;
+
+    }
   
     &__row{
         display:flex;
         flex-direction: row;
-
+        
         &-fieldOne {
             display:flex;
             flex-direction: row;
-            width: 5em;
-           
+            width: 6em;
+            
         }
-        &-buttonOne{
-            display:flex;
-            flex-direction: row;
-
-        }
+        // &-buttonOne{
+        //     display:flex;
+        //     flex-direction: row;
+            
+            
+        // }
         &-fieldTwo {
             display:flex;
             flex-direction: row;
@@ -34,13 +39,14 @@
             background-color: $color-secondary-light;
         }
     }
-
+    
 }
 .btn {
     background-color: $color-primary;
     border-style:solid;
     border-color: white;
     border-radius: 0%;
+    font-size: 1.2em;
 }
 #inputArtist  {
     background-color: $color-secondary-light;
@@ -48,7 +54,7 @@
     border-color: white;
     border-radius: 0%;
     font-family: $serif;
-    font-size: 1em;
+    font-size: 1.2em;
 
 
 
@@ -59,7 +65,7 @@
     border-color: white;
     border-radius: 0%;
     font-family: $serif;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 #inputSong{
@@ -68,5 +74,5 @@
     border-color: white;
     border-radius: 0%;
     font-family: $serif;
-    font-size: 1em;
+    font-size: 1.2em;
 }
