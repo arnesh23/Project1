@@ -262,10 +262,10 @@ function getNearbyRestaurants(obj) {
       var availableCuisine = [];
       var restList = details.nearby_restaurants;
       console.log("restlist length - ", restList.length);
-      for (i in cuisines) {
+      for (i in cuisineList) {
         for (j in top_cuisines) {
-          if (cuisines[i].toLowerCase() === top_cuisines[j].toLowerCase()) {
-            availableCuisine.push(cuisines[i].toLowerCase());
+          if (cuisineList[i].toLowerCase() === top_cuisines[j].toLowerCase()) {
+            availableCuisine.push(cuisineList[i].toLowerCase());
           }
         }
       }
@@ -288,19 +288,20 @@ function getNearbyRestaurants(obj) {
         console.log("length of card -", getCardDiv.length);
         console.log("restlist length - ", restList.length)
         console.log("idx - ", idx);
-        $(getCardTitle[idx]).text(restList[idx].restaurant.name);
+        var getRandNum = Math.floor(Math.random() * restList.length);
+        console.log("getRandNum",getRandNum); $(getCardTitle[idx]).text(restList[getRandNum].restaurant.name);
           // set data attributes
-        $(getCardDiv[idx]).attr("data-lat",restList[idx].restaurant.location.latitude);
-        $(getCardDiv[idx]).attr("data-lng",restList[idx].restaurant.location.longitude);
+        $(getCardDiv[idx]).attr("data-lat",restList[getRandNum].restaurant.location.latitude);
+        $(getCardDiv[idx]).attr("data-lng",restList[getRandNum].restaurant.location.longitude);
           
           
-        $(getCardSubTitle[idx]).text("Cuisine : " + restList[idx].restaurant.cuisines);
-        $(getCardText[idx]).text(restList[idx].restaurant.location.address);
+        $(getCardSubTitle[idx]).text("Cuisine : " + restList[getRandNum].restaurant.cuisines);
+        $(getCardText[idx]).text(restList[getRandNum].restaurant.location.address);
 
         // $(cardTitle[idx]).text(restList[idx].restaurant.name);
-        console.log(idx + "-" + restList[idx].restaurant.name);
-        console.log(idx + "-" + restList[idx].restaurant.cuisines);
-        console.log(idx + "-" + restList[idx].restaurant.location.address);
+        console.log(idx + "-" + restList[getRandNum].restaurant.name);
+        console.log(idx + "-" + restList[getRandNum].restaurant.cuisines);
+        console.log(idx + "-" + restList[getRandNum].restaurant.location.address);
 
         console.log("//=========================================//");
       }
@@ -356,8 +357,8 @@ function initMap() {
         var marker = new google.maps.Marker({
           position: coords,
           map: map,
-          title: 'Click to zoom!',
-          label: labels[labelIndex++ % labels.length] 
+          title: 'Click to zoom!'
+         // label: labels[labelIndex++ % labels.length] 
           //              url : "https://www.google.com/maps"
 
         });
