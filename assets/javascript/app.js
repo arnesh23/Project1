@@ -92,7 +92,11 @@ $(document).ready(function () {
     var artist = $("#inputArtist").val();
     var song = $("#inputSong").val();
     var songExists = false;
-
+    // clear input song/artist
+      
+      
+      $("#inputSong").val("");
+      $("#inputArtist").val("");
     zipCode.push(zip);
     firebase.database().ref('ZipCodes/' + "ZipCode").set({
       ZipCode: zipCode
@@ -200,7 +204,7 @@ function getCoordinates(inpZip) {
   // Make AJAX call to zipcode api to get lat/lng coordinates for zipcode
   //query - https://www.zipcodeapi.com/rest/fBPSu90menTPyiiwthbSbkzQ6zmVcDelh42nY2CUtRbEkaOJ4u16dV3l3XWoEaEE/info.json/95133/degrees
   //key2 - BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE
-  var zipAPIKey = "sXuRDF15cKTmcNzSP648VSUldR2WsiDrlmy9tqLlF89ZUtXfEGMy94w9ic4qAdSM";
+  var zipAPIKey = "BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE";
   var zipcodeQueryURL = "https://www.zipcodeapi.com/rest/" + zipAPIKey + "/info.json/" + inpZip + "/degrees";
   $.ajax({
     url: zipcodeQueryURL,
