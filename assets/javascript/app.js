@@ -289,7 +289,11 @@ function getNearbyRestaurants(obj) {
         console.log("restlist length - ", restList.length)
         console.log("idx - ", idx);
         $(getCardTitle[idx]).text(restList[idx].restaurant.name);
-
+          // set data attributes
+        $(getCardDiv[idx]).attr("data-lat",restList[idx].restaurant.location.latitude);
+        $(getCardDiv[idx]).attr("data-lng",restList[idx].restaurant.location.longitude);
+          
+          
         $(getCardSubTitle[idx]).text("Cuisine : " + restList[idx].restaurant.cuisines);
         $(getCardText[idx]).text(restList[idx].restaurant.location.address);
 
@@ -309,14 +313,30 @@ function getNearbyRestaurants(obj) {
   //===============================================================    
   //                Feature-3 : Display  map    
   //===============================================================   
-
+var labels = 'ABC';
+var labelIndex = 0;
 function initMap() {
-  var locCoord = [{ lat: 37.424574, lng: -121.748382 }, { lat: 37.6213, lng: -122.389977 }];
-  var myLatLng = { lat: 37.424574, lng: -121.748382 };
-
+//  var locCoord = [{ lat: 37.424574, lng: -121.748382 }, { lat: 37.6213, lng: -122.389977 }];
+//  var myLatLng = { lat: 37.424574, lng: -121.748382 };
+  var locCoord = [];
+  
+  var getLatLng = document.getElementsByClassName("card");
+    for (i=0;i<getLatLng.length;i++){
+        var locObj = {};
+        locObj.lat = parseFloat(getLatLng[i].getAttribute("data-lat"));
+        console.log("locObj.lat",locObj.lat);
+        locObj.lng = parseFloat(getLatLng[i].getAttribute("data-lng"));
+        console.log("locObj.lng ",locObj.lng);
+        locCoord.push(locObj);
+        
+        console.log("inside for",locCoord);
+    }
+    console.log("locCoord",locCoord);
+    
+    
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
-    center: locCoord[0] // set to initial value
+    center: { lat: 37.424574, lng: -121.748382 } // set to initial value
   });
 
   generateMarker(locCoord);
@@ -326,6 +346,7 @@ function initMap() {
       function generateMarker(objCoord) {
         for (i = 0; i < objCoord.length; i++) {
           addMarker(objCoord[i]);
+            console.log("objCoord[i]",objCoord[i]);
         }
 
       }
@@ -336,6 +357,7 @@ function initMap() {
           position: coords,
           map: map,
           title: 'Click to zoom!',
+          label: labels[labelIndex++ % labels.length] 
           //              url : "https://www.google.com/maps"
 
         });
