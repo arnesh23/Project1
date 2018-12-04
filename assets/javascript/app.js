@@ -60,7 +60,7 @@ $(document).ready(function () {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-
+  $(".card").hide();
   //This block of code eliminates the eliminatation the CORS restriction
   jQuery.ajaxPrefilter(function (options) {
     if (options.crossDomain && jQuery.support.cors) {
@@ -300,9 +300,10 @@ function getNearbyRestaurants(obj) {
 
         console.log("//=========================================//");
       }
+            $(".card").show();
     }
        
-         getCoordinates(getZipCode);
+        
 
 
   //===============================================================    
