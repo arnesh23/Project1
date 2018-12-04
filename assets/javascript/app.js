@@ -1,5 +1,3 @@
-
-
 //===============================================================    
 //                Feature-1 : display song list   
 //===============================================================  
@@ -45,7 +43,7 @@ var genreTypes = {
 // List of Cuisines
 var cuisineList = [];
 var zipCode = []
-
+var zip;
 
 
 $(document).ready(function () {
@@ -62,7 +60,7 @@ $(document).ready(function () {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-
+  $(".card").hide();
   //This block of code eliminates the eliminatation the CORS restriction
   jQuery.ajaxPrefilter(function (options) {
     if (options.crossDomain && jQuery.support.cors) {
@@ -90,11 +88,15 @@ $(document).ready(function () {
     //initialize variables
 
 
-    var zip = $("#inputZipCode").val();
+        zip = $("#inputZipCode").val();
     var artist = $("#inputArtist").val();
     var song = $("#inputSong").val();
     var songExists = false;
-
+    // clear input song/artist
+      
+      
+      $("#inputSong").val("");
+      $("#inputArtist").val("");
     zipCode.push(zip);
     firebase.database().ref('ZipCodes/' + "ZipCode").set({
       ZipCode: zipCode
@@ -168,6 +170,7 @@ $(document).ready(function () {
       }
       if (songExists === false)
         $('#alertModal').modal('show')
+        getCoordinates(zip);
     })
     //
 
@@ -180,7 +183,7 @@ $(document).ready(function () {
 //===============================================================     
 
 var cuisines = ["Mexican", "Italian", "Indian", "Chinese"];
-var getZipCode = "95132";
+//var getZipCode = "95132";
 var locCoordinates = {};
 //      var locCoordinates = getCoordinates(getZipCode);
 //    // get user input - uncomment before merging to master
@@ -194,12 +197,14 @@ jQuery.ajaxPrefilter(function (options) {
     options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
   }
 });
+// add google maps url 
+
 
 function getCoordinates(inpZip) {
   // Make AJAX call to zipcode api to get lat/lng coordinates for zipcode
   //query - https://www.zipcodeapi.com/rest/fBPSu90menTPyiiwthbSbkzQ6zmVcDelh42nY2CUtRbEkaOJ4u16dV3l3XWoEaEE/info.json/95133/degrees
   //key2 - BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE
-  var zipAPIKey = "sXuRDF15cKTmcNzSP648VSUldR2WsiDrlmy9tqLlF89ZUtXfEGMy94w9ic4qAdSM";
+  var zipAPIKey = "BQB45i05VjZM8HY2Ij6gmvUHi2sQoSH8Fj7AV6x7uVmhGq6BeNDC0aZku2ikC1KE";
   var zipcodeQueryURL = "https://www.zipcodeapi.com/rest/" + zipAPIKey + "/info.json/" + inpZip + "/degrees";
   $.ajax({
     url: zipcodeQueryURL,
@@ -261,10 +266,10 @@ function getNearbyRestaurants(obj) {
       var availableCuisine = [];
       var restList = details.nearby_restaurants;
       console.log("restlist length - ", restList.length);
-      for (i in cuisines) {
+      for (i in cuisineList) {
         for (j in top_cuisines) {
-          if (cuisines[i].toLowerCase() === top_cuisines[j].toLowerCase()) {
-            availableCuisine.push(cuisines[i].toLowerCase());
+          if (cuisineList[i].toLowerCase() === top_cuisines[j].toLowerCase()) {
+            availableCuisine.push(cuisineList[i].toLowerCase());
           }
         }
       }
@@ -287,34 +292,56 @@ function getNearbyRestaurants(obj) {
         console.log("length of card -", getCardDiv.length);
         console.log("restlist length - ", restList.length)
         console.log("idx - ", idx);
-        $(getCardTitle[idx]).text(restList[idx].restaurant.name);
-
-        $(getCardSubTitle[idx]).text("Cuisine : " + restList[idx].restaurant.cuisines);
-        $(getCardText[idx]).text(restList[idx].restaurant.location.address);
+        var getRandNum = Math.floor(Math.random() * restList.length);
+        console.log("getRandNum",getRandNum); $(getCardTitle[idx]).text(restList[getRandNum].restaurant.name);
+          // set data attributes
+        $(getCardDiv[idx]).attr("data-lat",restList[getRandNum].restaurant.location.latitude);
+        $(getCardDiv[idx]).attr("data-lng",restList[getRandNum].restaurant.location.longitude);
+          
+          
+        $(getCardSubTitle[idx]).text("Cuisine : " + restList[getRandNum].restaurant.cuisines);
+        $(getCardText[idx]).text(restList[getRandNum].restaurant.location.address);
 
         // $(cardTitle[idx]).text(restList[idx].restaurant.name);
-        console.log(idx + "-" + restList[idx].restaurant.name);
-        console.log(idx + "-" + restList[idx].restaurant.cuisines);
-        console.log(idx + "-" + restList[idx].restaurant.location.address);
+        console.log(idx + "-" + restList[getRandNum].restaurant.name);
+        console.log(idx + "-" + restList[getRandNum].restaurant.cuisines);
+        console.log(idx + "-" + restList[getRandNum].restaurant.location.address);
 
         console.log("//=========================================//");
       }
+            $(".card").show();
     }
        
-         getCoordinates(getZipCode);
+        
 
 
   //===============================================================    
   //                Feature-3 : Display  map    
   //===============================================================   
-
+var labels = 'ABC';
+var labelIndex = 0;
 function initMap() {
-  var locCoord = [{ lat: 37.424574, lng: -121.748382 }, { lat: 37.6213, lng: -122.389977 }];
-  var myLatLng = { lat: 37.424574, lng: -121.748382 };
-
+//  var locCoord = [{ lat: 37.424574, lng: -121.748382 }, { lat: 37.6213, lng: -122.389977 }];
+//  var myLatLng = { lat: 37.424574, lng: -121.748382 };
+  var locCoord = [];
+  
+  var getLatLng = document.getElementsByClassName("card");
+    for (i=0;i<getLatLng.length;i++){
+        var locObj = {};
+        locObj.lat = parseFloat(getLatLng[i].getAttribute("data-lat"));
+        console.log("locObj.lat",locObj.lat);
+        locObj.lng = parseFloat(getLatLng[i].getAttribute("data-lng"));
+        console.log("locObj.lng ",locObj.lng);
+        locCoord.push(locObj);
+        
+        console.log("inside for",locCoord);
+    }
+    console.log("locCoord",locCoord);
+    
+    
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
-    center: locCoord[0] // set to initial value
+    center: { lat: 37.424574, lng: -121.748382 } // set to initial value
   });
 
   generateMarker(locCoord);
@@ -324,6 +351,7 @@ function initMap() {
       function generateMarker(objCoord) {
         for (i = 0; i < objCoord.length; i++) {
           addMarker(objCoord[i]);
+            console.log("objCoord[i]",objCoord[i]);
         }
 
       }
@@ -333,7 +361,8 @@ function initMap() {
         var marker = new google.maps.Marker({
           position: coords,
           map: map,
-          title: 'Click to zoom!',
+          title: 'Click to zoom!'
+         // label: labels[labelIndex++ % labels.length] 
           //              url : "https://www.google.com/maps"
 
         });
@@ -348,9 +377,4 @@ function initMap() {
         })
       }
 
-    }
-
-
-
-
-
+}
